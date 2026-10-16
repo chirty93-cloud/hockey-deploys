@@ -1,0 +1,154 @@
+{
+  "defaults": {
+    "maxScore": 7,
+    "orientation": "auto",
+    "aspectRatio": "auto",
+    "timeLimit": 300,
+    "playerColor": "blue",
+    "playerSide": "left",
+    "tablePreset": "full",
+    "soundEnabled": true
+  },
+  "limits": {
+    "maxScore": {
+      "min": 1,
+      "max": 20
+    },
+    "timeMinutes": {
+      "min": 1,
+      "max": 60
+    }
+  },
+  "table": {
+    "shortEdge": 432,
+    "paddleRadius": 30,
+    "puckRadius": 15,
+    "goalWidth": 120,
+    "homeOffset": 60
+  },
+  "gameplay": {
+    "serveSpeed": 240,
+    "aiSpeed": 210,
+    "aiHalfTimeoutSeconds": 10,
+    "puckMaxSpeed": 1.8
+  },
+  "tablePresets": {
+    "small": {
+      "label": "Mały — 65%",
+      "scale": 0.65
+    },
+    "medium": {
+      "label": "Średni — 80%",
+      "scale": 0.8
+    },
+    "large": {
+      "label": "Duży — 90%",
+      "scale": 0.9
+    },
+    "full": {
+      "label": "Maksymalny — 100%",
+      "scale": 1
+    }
+  },
+  "colors": {
+    "blue": {
+      "label": "Niebieski",
+      "fill": "#00cfee",
+      "outline": "#078ba8"
+    },
+    "red": {
+      "label": "Czerwony",
+      "fill": "#ff4d58",
+      "outline": "#bc263d"
+    },
+    "green": {
+      "label": "Zielony",
+      "fill": "#2ecc71",
+      "outline": "#27ae60"
+    },
+    "purple": {
+      "label": "Fioletowy",
+      "fill": "#9b59b6",
+      "outline": "#8e44ad"
+    },
+    "orange": {
+      "label": "Pomarańczowy",
+      "fill": "#f39c12",
+      "outline": "#d68910"
+    },
+    "cyan": {
+      "label": "Turkusowy",
+      "fill": "#2de2bd",
+      "outline": "#159b83"
+    }
+  },
+  "opponentColors": {
+    "blue": "red",
+    "red": "blue",
+    "green": "purple",
+    "purple": "green",
+    "orange": "cyan",
+    "cyan": "orange"
+  },
+  "physics": {
+    "puckDrag": {
+      "group": "Krążek",
+      "label": "Opór powietrza",
+      "default": 0.15,
+      "min": 0,
+      "max": 1.5,
+      "step": 0.05,
+      "unit": "1/s",
+      "description": "Tempo spadku prędkości: v(t) = v₀ · exp(−opór · t). 0 oznacza swobodny ślizg."
+    },
+    "wallRestitution": {
+      "group": "Krążek",
+      "label": "Sprężystość band",
+      "default": 0.92,
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "unit": "%",
+      "description": "Zachowana część prędkości prostopadłej do bandy. 100% to odbicie bez straty energii."
+    },
+    "paddleRestitution": {
+      "group": "Krążek",
+      "label": "Sprężystość paletki",
+      "default": 0.95,
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "unit": "%",
+      "description": "Sprężystość zderzenia względem poruszającej się paletki. Ruch paletki przekazuje energię tylko w kierunku uderzenia."
+    },
+    "playerResponseMs": {
+      "group": "Gracz",
+      "label": "Czas reakcji paletki",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "ms",
+      "description": "Stała czasu doganiania palca lub myszy: po tym czasie pokonuje ok. 63% dystansu, o ile nie ogranicza jej maksymalna szybkość. Bez wyprzedzania ruchu."
+    },
+    "playerMaxSpeed": {
+      "group": "Gracz",
+      "label": "Maksymalna szybkość paletki",
+      "default": 3.5,
+      "min": 0.5,
+      "max": 6,
+      "step": 0.1,
+      "unit": "szer. stołu/s",
+      "description": "Limit szybkości ruchu. Jednostką jest krótszy bok stołu, niezależnie od rozmiaru ekranu."
+    }
+  },
+  "audio": {
+    "volume": 0.22
+  },
+  "effects": {
+    "wallDuration": 0.24,
+    "goalDuration": 0.7,
+    "maxParticles": 80,
+    "noticeMs": 850
+  }
+}

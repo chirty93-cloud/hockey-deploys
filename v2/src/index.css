@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+body { margin: 0; background: #080f1b; color: #f6faff; color-scheme: dark; }
+.air-hockey {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: radial-gradient(ellipse at 15% 10%, #00cfee0d, transparent 50%),
+    radial-gradient(ellipse at 90% 85%, #ff4d580a, transparent 45%), #080f1b;
+}
+.air-hockey button, .air-hockey input, .air-hockey select, .air-hockey summary { -webkit-tap-highlight-color: transparent; }
+.air-hockey button { border: 1px solid #586a843d; border-radius: 10px; }
+.air-hockey button:active { filter: brightness(.9); }
+.air-hockey button[class*="bg-green-"] {
+  background: linear-gradient(135deg, #4ee7f4, #00badb);
+  color: #071725; border-color: #78f0ff80; box-shadow: 0 4px 20px #00cfee1a;
+}
+.air-hockey button[class*="bg-green-"]:hover { filter: brightness(1.08); }
+.air-hockey button[class*="bg-blue-"], .air-hockey button[class*="bg-gray-"] { background: #17283c; }
+.air-hockey button[class*="bg-yellow-"] { background: #243046; }
+.air-hockey button[class*="bg-red-"] { background: #3b1d2a; color: #ffabb2; }
+.setup-card, .result-card {
+  background: linear-gradient(145deg, #172438ee, #0c1525);
+  border: 1px solid #7387a53d; border-radius: 20px;
+  box-shadow: 0 24px 80px #0006, inset 0 1px 0 #ffffff0c;
+}
+.setup-card h1 { font-style: italic; letter-spacing: .055em; }
+.brand-air { color: #f6faff; }
+.brand-hockey { color: #00cfee; text-shadow: 0 0 24px #00cfee33; }
+.setup-fields select, .setup-fields input[type="number"] {
+  min-height: 44px; background: #0a1423; border-color: #60749166; border-radius: 10px;
+}
+.setup-fields select:focus, .setup-fields input[type="number"]:focus {
+  outline: 2px solid #00cfee; outline-offset: 2px;
+}
+.setup-fields details { background: #0a142399; border: 1px solid #60749144; border-radius: 12px; }
+.setup-fields summary { color: #d0deed; }
+.scoreboard {
+  background: linear-gradient(160deg, #1b2b40, #0c1525);
+  border: 1px solid #7186a644; border-bottom-color: #00cfee80;
+  border-radius: 14px; padding: 8px 24px; box-shadow: 0 6px 24px #0003;
+  font-variant-numeric: tabular-nums;
+}
+.scoreboard .text-3xl { letter-spacing: .06em; }
+.scoreboard .text-sm { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.scoreboard > :last-child { border-left: 1px solid #7186a644; padding-left: 18px; margin-left: 0; }
+.game-canvas { border-radius: 12px; box-shadow: 0 16px 50px #0007, 0 0 0 1px #7088a34d; }
+.air-hockey .pause-button { top: 12px; right: 12px; padding: 6px 10px; font-size: 12px; background: #0a1423e6; }
+.pause-overlay { background: #050b16e8; backdrop-filter: blur(6px); }
+.pause-title, .result-card > :first-child { letter-spacing: .06em; }
+.game-help { color: #9cabc0; }
+@media (max-width: 400px) {
+  .scoreboard { padding: 6px 14px; gap: 14px; }
+  .setup-card { padding: 1.25rem; }
+}
+
+.setup-shell { min-height: 100dvh; overflow-y: auto; }
+.setup-card { flex: 0 0 auto; }
+.setup-fields { display: flex; flex-direction: column; gap: 1.25rem; }
+.game-shell {
+  height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 0;
+  padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  overflow: hidden;
+}
+.scoreboard { flex-shrink: 0; margin-bottom: 8px; gap: 20px; }
+.table-space { flex: 1; min-height: 0; min-width: 0; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); place-items: center; }
+.game-canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.game-help { flex-shrink: 0; margin-top: 8px; text-align: center; font-size: 12px; }
+.pause-overlay { overflow-y: auto; padding: 12px; }
+.pause-actions { width: min(256px, 100%); }
+button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+@media (max-height: 500px) {
+  .setup-shell { justify-content: flex-start; }
+  .setup-card { padding: 1.25rem; }
+  .setup-card h1 { margin-bottom: .75rem; font-size: 1.5rem; line-height: 2rem; }
+  .setup-fields { gap: .75rem; }
+  .scoreboard { margin-bottom: 4px; padding: 3px 18px; }
+  .scoreboard .text-3xl { font-size: 22px; line-height: 26px; }
+  .scoreboard .text-2xl { font-size: 20px; line-height: 26px; }
+  .game-help { margin-top: 4px; }
+  .pause-title { font-size: 24px; margin-bottom: 8px; }
+  .pause-actions > button { padding-top: 6px; padding-bottom: 6px; font-size: 13px; }
+  .pause-actions > :not(:last-child) { margin-bottom: 6px; }
+}
+
+.goal-notice { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; pointer-events: none; }
+.goal-notice-card {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 14px 36px; border: 1px solid currentColor; border-radius: 16px;
+  background: #081321e8; box-shadow: 0 0 24px #00cfee22;
+  animation: goal-notice 850ms ease-out both;
+}
+.goal-notice-card strong { font-size: clamp(28px, 6vw, 48px); font-style: italic; letter-spacing: .08em; line-height: 1.1; }
+.goal-notice-card span { color: #edf6ff; font-size: 12px; font-weight: 700; letter-spacing: .2em; }
+@keyframes goal-notice {
+  0% { opacity: 0; transform: scale(.9); }
+  15%, 70% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .goal-notice-card { animation: none; }
+}
